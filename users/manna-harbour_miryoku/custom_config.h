@@ -5,6 +5,8 @@
 
 #pragma once
 
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+
 #define XXX KC_NO
 
 // custom QWERTY keymappings
@@ -14,15 +16,15 @@ LGUI_T(KC_A),      LALT_T(KC_S),      LCTL_T(KC_D),      LSFT_T(KC_F),      KC_G
 LT(U_BUTTON,KC_Z), ALGR_T(KC_X),      KC_C,              KC_V,              KC_B,              KC_N,              KC_M,              KC_COMM,           ALGR_T(KC_DOT),    LT(U_BUTTON,KC_SLSH),\
 U_NP,              U_NP,              LT(U_MEDIA,KC_ESC),LT(U_NAV,KC_SPC),  LT(U_MOUSE,KC_TAB),LT(U_SYM,KC_ENT),  LT(U_NUM,KC_BSPC), LT(U_FUN,KC_DEL),  U_NP,              U_NP
 
-// Gaming keymappings
-#define MIRYOKU_LAYER_GAME \
-KC_Q,              KC_W,              KC_E,              KC_R,              KC_T,              KC_Y,              KC_U,              KC_I,              KC_O,              KC_P,              \
-KC_A,      KC_S,      KC_D,      KC_F,      KC_G,              KC_H,              LSFT_T(KC_J),      LCTL_T(KC_K),      LALT_T(KC_L),      LGUI_T(KC_SCLN),   \
-LT(U_BUTTON,KC_Z), ALGR_T(KC_X),      KC_C,              KC_V,              KC_B,              KC_N,              KC_M,              KC_COMM,           ALGR_T(KC_DOT),    LT(U_BUTTON,KC_SLSH),\
-U_NP,              U_NP,              LT(U_MEDIA,KC_ESC),LT(U_NAV,KC_SPC),  LT(U_MOUSE,KC_TAB),LT(U_SYM,KC_ENT),  LT(U_NUM,KC_BSPC), LT(U_FUN,KC_DEL),  U_NP,              U_NP
-
 // Layout for Boardsoarce Lulu
 #if defined (KEYBOARD_boardsource_lulu_rp2040)
+    // Gaming keymappings
+    #define MIRYOKU_LAYER_GAME \
+    KC_Q,              KC_W,              KC_E,              KC_R,              KC_T,              KC_Y,              KC_U,              KC_I,              KC_O,              KC_P,              \
+    KC_A,      KC_S,      KC_D,      KC_F,      KC_G,              KC_H,              LSFT_T(KC_J),      LCTL_T(KC_K),      LALT_T(KC_L),      LGUI_T(KC_SCLN),   \
+    LT(U_BUTTON,KC_Z), ALGR_T(KC_X),      KC_C,              KC_V,              KC_B,              KC_N,              KC_M,              KC_COMM,           ALGR_T(KC_DOT),    LT(U_BUTTON,KC_SLSH),\
+    U_NP,              U_NP,              LT(U_MEDIA,KC_ESC),LT(U_NAV,KC_SPC),  LT(U_MOUSE,KC_TAB),LT(U_SYM,KC_ENT),  LT(U_NUM,KC_BSPC), LT(U_FUN,KC_DEL),  U_NP,              U_NP
+
     // all layers
     #define MIRYOKU_MAPPING(\
         K00, K01, K02, K03, K04,                K05, K06, K07, K08, K09,\
@@ -51,21 +53,21 @@ U_NP,              U_NP,              LT(U_MEDIA,KC_ESC),LT(U_NAV,KC_SPC),  LT(U
     KC_LSFT, K20,  K21,  K22,  K23,  K24, KC_CAPS,      TG(U_GAME), K25,  K26,  K27,  K28,  K29,  KC_RSFT,\
                      KC_LALT,  K32,  K33, K34,          K35,        K36,  K37,  KC_RGUI\
     )
-#endif
 
-// cutom layer list
-#define MIRYOKU_LAYER_LIST \
-MIRYOKU_X(BASE,   "Base") \
-MIRYOKU_X(EXTRA,  "Extra") \
-MIRYOKU_X(GAME,   "Gaming") \
-MIRYOKU_X(TAP,    "Tap") \
-MIRYOKU_X(BUTTON, "Button") \
-MIRYOKU_X(NAV,    "Nav") \
-MIRYOKU_X(MOUSE,  "Mouse") \
-MIRYOKU_X(MEDIA,  "Media") \
-MIRYOKU_X(NUM,    "Num") \
-MIRYOKU_X(SYM,    "Sym") \
-MIRYOKU_X(FUN,    "Fun")
+    // custom layer list
+    #define MIRYOKU_LAYER_LIST \
+    MIRYOKU_X(BASE,   "Base") \
+    MIRYOKU_X(EXTRA,  "Extra") \
+    MIRYOKU_X(GAME,   "Gaming") \
+    MIRYOKU_X(TAP,    "Tap") \
+    MIRYOKU_X(BUTTON, "Button") \
+    MIRYOKU_X(NAV,    "Nav") \
+    MIRYOKU_X(MOUSE,  "Mouse") \
+    MIRYOKU_X(MEDIA,  "Media") \
+    MIRYOKU_X(NUM,    "Num") \
+    MIRYOKU_X(SYM,    "Sym") \
+    MIRYOKU_X(FUN,    "Fun")
+#endif
 
 #ifdef RGB_MATRIX_ENABLE
     // Configure RGB Matrix
@@ -73,7 +75,7 @@ MIRYOKU_X(FUN,    "Fun")
     #define RGB_MATRIX_LED_FLUSH_LIMIT 16
     #define RGB_DISABLE_WHEN_USB_SUSPENDED
     #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_COLOR
-    #define RGB_MATRIX_DEFAULT_HUE 10
+    #define RGB_MATRIX_DEFAULT_HUE 0
     #define RGB_MATRIX_DEFAULT_SAT 255
     #define RGB_MATRIX_DEFAULT_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
     // Disable RGB Matrix effects (from lulu/config.h)
@@ -84,6 +86,7 @@ MIRYOKU_X(FUN,    "Fun")
     #undef ENABLE_RGB_MATRIX_BAND_SAT
     #undef ENABLE_RGB_MATRIX_BAND_VAL
     // Enable RGB Matrix effects
+    #define ENABLE_RGB_MATRIX_ALPHAS_MODS
     #define ENABLE_RGB_MATRIX_BREATHING
     #define ENABLE_RGB_MATRIX_TYPING_HEATMAP
     #define ENABLE_RGB_MATRIX_SOLID_REACTIVE_SIMPLE

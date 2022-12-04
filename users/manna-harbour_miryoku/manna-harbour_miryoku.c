@@ -91,7 +91,7 @@ combo_t key_combos[COMBO_COUNT] = {
 #endif
 
 // custom combos
-const uint16_t PROGMEM combos_caps_word[] = {LSFT_T(KC_F), LSFT_T(KC_J), COMBO_END};
+const uint16_t PROGMEM combos_caps_word[] = {KC_V, KC_M, COMBO_END};
 const uint16_t PROGMEM combos_undo[] = {LT(U_BUTTON,KC_Z), ALGR_T(KC_X), COMBO_END};
 const uint16_t PROGMEM combos_cut[] = {LT(U_BUTTON,KC_Z), KC_C, COMBO_END};
 const uint16_t PROGMEM combos_copy[] = {ALGR_T(KC_X), KC_C, COMBO_END};
